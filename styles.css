@@ -237,6 +237,7 @@ section { scroll-margin-top: 64px; }
   font-style: italic; font-weight: 300;
 }
 .director-quote::before { content: '"'; font-size: 2rem; color: var(--orange); line-height: 0; vertical-align: -0.4rem; margin-right: 4px; }
+.director-quote::after { content: '"'; font-size: 2rem; color: var(--orange); line-height: 0; vertical-align: -0.4rem; margin-left: 2px; }
 
 .about-right p {
   font-size: 0.95rem; line-height: 1.8; color: #4a5568; margin-bottom: 1.25rem;
