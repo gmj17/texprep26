@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>TexPREP Alumni | Stay Connected</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body class="alumni-page">
+
+<nav>
+  <a class="nav-brand" href="index.html#home">
+    <div class="nav-logo">TX</div>
+    <span class="nav-title">Tex<span>PREP</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html#about">About</a>
+    <a href="index.html#program">Program</a>
+    <a href="index.html#events">Events</a>
+    <a href="index.html#eligibility">Eligibility</a>
+    <a href="index.html#sponsors">Sponsors</a>
+    <a href="index.html#staff">Staff</a>
+    <a href="alumni.html" class="active">Alumni</a>
+    <a href="index.html#eligibility" class="nav-cta">Apply Now</a>
+  </div>
+</nav>
+
+<main class="alumni-main">
+  <section>
+    <div class="section-inner">
+      <span class="section-tag">// 08 — Alumni</span>
+      <h1 class="section-title">Stay Connected with <span class="light">TexPREP</span></h1>
+      <div class="divider"></div>
+
+      <p class="alumni-intro">TexPREP is more than a summer program—it’s a community that continues to grow through the achievements, experiences, and leadership of its alumni. Whether you participated years ago or recently completed the program, you remain an important part of the TexPREP story.</p>
+      <p class="alumni-intro">We invite TexPREP alumni to stay connected, share their journeys, and help inspire the next generation of students interested in science, technology, engineering, and mathematics. Your experiences, insights, and accomplishments make a difference—and we’d love to hear from you.</p>
+      <p class="alumni-intro">Use the form below to reconnect with TexPREP, update your contact information, share career or academic milestones, volunteer to participate as speaker in career awareness sessions, or simply say hello. Together, we can strengthen the TexPREP network and continue building pathways to success.</p>
+      <p class="alumni-intro" style="margin-bottom:2.5rem;">Once TexPREP, always TexPREP.<br>We look forward to hearing from you.</p>
+
+      <div class="alumni-wrap">
+        <div class="alumni-side">
+          <div class="alumni-card">
+            <h3>Reconnect with TexPREP</h3>
+            <p>Please complete this alumni form so the program can stay in touch and celebrate your journey.</p>
+            <ul class="alumni-list">
+              <li>Update contact information</li>
+              <li>Share academic and career milestones</li>
+              <li>Express interest in mentoring or speaking opportunities</li>
+              <li>Help strengthen the TexPREP alumni network</li>
+            </ul>
+            <h3 style="margin-top:1.25rem;">TexPREP Alumni Network</h3>
+            <ul class="alumni-focus-list">
+              <li>STEM Community</li>
+              <li>Mentorship</li>
+              <li>Career Awareness</li>
+              <li>Student Impact</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="alumni-card">
+          <h3>Alumni Contact Form</h3>
+          <p>Would you like to contact us to explore ways to contribute?</p>
+          <form id="alumniForm" class="alumni-form" action="https://formsubmit.co/ajax/jesus.gonzalez1@utrgv.edu" method="post">
+            <input type="hidden" name="_subject" value="TexPREP Alumni Form Response">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;">
+            <div>
+              <label for="fullName">Full Name</label>
+              <input id="fullName" name="Full Name" type="text" required>
+            </div>
+
+            <div class="form-grid">
+              <div>
+                <label for="email">Email</label>
+                <input id="email" name="Email" type="email" required>
+              </div>
+              <div>
+                <label for="phone">Phone</label>
+                <input id="phone" name="Phone" type="tel">
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <div>
+                <label for="prepLevel">Highest PREP Level Completed</label>
+                <select id="prepLevel" name="Highest PREP Level Completed" required>
+                  <option value="">Select</option>
+                  <option value="PREP 1">PREP 1</option>
+                  <option value="PREP 2">PREP 2</option>
+                  <option value="PREP 3">PREP 3</option>
+                  <option value="PREP 4">PREP 4</option>
+                </select>
+              </div>
+              <div>
+                <label for="yearsAttended">Years Attended</label>
+                <input id="yearsAttended" name="Years Attended" type="text" placeholder="Example: 2019-2022">
+              </div>
+            </div>
+
+            <div>
+              <label for="currentStatus">Current School, University, or Employer</label>
+              <input id="currentStatus" name="Current School, University, or Employer" type="text">
+            </div>
+
+            <div class="form-grid">
+              <div>
+                <label for="city">City</label>
+                <input id="city" name="City" type="text">
+              </div>
+              <div>
+                <label for="state">State</label>
+                <input id="state" name="State" type="text">
+              </div>
+            </div>
+
+            <div>
+              <label for="milestones">Career or Academic Milestones</label>
+              <textarea id="milestones" name="Career or Academic Milestones" rows="4" placeholder="Share highlights you would like TexPREP to know about."></textarea>
+            </div>
+
+            <div>
+              <label for="speakerInterest">Interested in speaking at career awareness sessions?</label>
+              <select id="speakerInterest" name="Interested in Speaking at Career Awareness Sessions">
+                <option value="">Select</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+                <option value="Maybe">Maybe</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="message">Message</label>
+              <textarea id="message" name="Message" rows="4" placeholder="Anything else you would like to share with TexPREP?"></textarea>
+            </div>
+
+            <p id="alumniStatus" class="alumni-status" aria-live="polite"></p>
+            <button type="submit" class="btn-primary" style="border:none;cursor:pointer;">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+  const alumniForm = document.getElementById('alumniForm');
+  const alumniStatus = document.getElementById('alumniStatus');
+
+  if (alumniForm && alumniStatus) {
+    alumniForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const submitButton = alumniForm.querySelector('button[type="submit"]');
+      const originalButtonText = submitButton.textContent;
+      submitButton.disabled = true;
+      submitButton.textContent = 'Submitting...';
+
+      alumniStatus.className = 'alumni-status';
+      alumniStatus.textContent = '';
+
+      try {
+        const response = await fetch(alumniForm.action, {
+          method: 'POST',
+          body: new FormData(alumniForm),
+          headers: {
+            Accept: 'application/json'
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error('Submission failed');
+        }
+
+        alumniForm.reset();
+        alumniStatus.className = 'alumni-status success';
+        alumniStatus.textContent = 'Thank you. Your alumni response was submitted successfully.';
+      } catch (error) {
+        alumniStatus.className = 'alumni-status error';
+        alumniStatus.textContent = 'We could not submit the form right now. Please try again in a moment.';
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = originalButtonText;
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
