@@ -24,7 +24,7 @@
     <a href="#sponsors">Sponsors</a>
     <a href="#staff">Staff</a>
     <a href="alumni.html">Alumni</a>
-    <a href="#eligibility" class="nav-cta">Apply Now</a>
+    <a href="#apply" class="nav-cta">Apply Now</a>
   </div>
 </nav>
 
@@ -414,6 +414,66 @@
   </div>
 </section>
 
+<section id="apply">
+  <div class="section-inner">
+    <span class="section-tag">// 08 — Apply</span>
+    <h2 class="section-title">Application <span class="light">Form</span></h2>
+    <div class="divider"></div>
+
+    <div class="schedule-section-card">
+      <div class="schedule-modal-head">
+        <p class="schedule-kicker">Summer 2026 Enrollment</p>
+        <h3 id="scheduleFormTitle">Schedule an Application Follow-Up</h3>
+        <p>Parents can submit contact details and student information so our team can follow up with next steps.</p>
+      </div>
+
+      <form id="scheduleForm" class="schedule-form" action="https://formsubmit.co/ajax/jesus.gonzalez1@utrgv.edu" method="post">
+        <input type="hidden" name="_subject" value="TexPREP Parent Schedule Request">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;">
+
+        <div>
+          <label for="parentName">Parent Name</label>
+          <input id="parentName" name="Parent Name" type="text" required>
+        </div>
+
+        <div class="schedule-form-grid">
+          <div>
+            <label for="parentPhone">Phone Number</label>
+            <input id="parentPhone" name="Phone Number" type="tel" required>
+          </div>
+          <div>
+            <label for="parentEmail">Email</label>
+            <input id="parentEmail" name="Email" type="email" required>
+          </div>
+        </div>
+
+        <div class="schedule-form-grid">
+          <div>
+            <label for="studentName">Student Name</label>
+            <input id="studentName" name="Student Name" type="text" required>
+          </div>
+          <div>
+            <label for="schoolGrade">School Grade</label>
+            <input id="schoolGrade" name="School Grade" type="text" placeholder="Example: 8th Grade" required>
+          </div>
+        </div>
+
+        <div>
+          <label for="schoolDistrict">School District</label>
+          <input id="schoolDistrict" name="School District" type="text" required>
+        </div>
+
+        <p id="scheduleStatus" class="schedule-status" aria-live="polite"></p>
+
+        <div class="schedule-actions">
+          <button type="submit" class="btn-primary schedule-submit">Send Request</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
 <!-- SPONSORS -->
 <section id="sponsors">
   <div class="section-inner">
@@ -541,6 +601,62 @@
   </div>
 </footer>
 
+<div class="schedule-modal-backdrop" id="scheduleModal" aria-hidden="true">
+  <div class="schedule-modal" role="dialog" aria-modal="true" aria-labelledby="scheduleModalTitle">
+    <button type="button" class="schedule-close" id="scheduleClose" aria-label="Close schedule form">×</button>
+    <div class="schedule-modal-head">
+      <p class="schedule-kicker">Summer 2026 Enrollment</p>
+      <h3 id="scheduleModalTitle">Schedule an Application Follow-Up</h3>
+      <p>Parents can submit contact details and student information so our team can follow up with next steps.</p>
+    </div>
+
+    <form id="scheduleFormPopup" class="schedule-form" action="https://formsubmit.co/ajax/jesus.gonzalez1@utrgv.edu" method="post">
+      <input type="hidden" name="_subject" value="TexPREP Parent Schedule Request">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;">
+
+      <div>
+        <label for="popupParentName">Parent Name</label>
+        <input id="popupParentName" name="Parent Name" type="text" required>
+      </div>
+
+      <div class="schedule-form-grid">
+        <div>
+          <label for="popupParentPhone">Phone Number</label>
+          <input id="popupParentPhone" name="Phone Number" type="tel" required>
+        </div>
+        <div>
+          <label for="popupParentEmail">Email</label>
+          <input id="popupParentEmail" name="Email" type="email" required>
+        </div>
+      </div>
+
+      <div class="schedule-form-grid">
+        <div>
+          <label for="popupStudentName">Student Name</label>
+          <input id="popupStudentName" name="Student Name" type="text" required>
+        </div>
+        <div>
+          <label for="popupSchoolGrade">School Grade</label>
+          <input id="popupSchoolGrade" name="School Grade" type="text" placeholder="Example: 8th Grade" required>
+        </div>
+      </div>
+
+      <div>
+        <label for="popupSchoolDistrict">School District</label>
+        <input id="popupSchoolDistrict" name="School District" type="text" required>
+      </div>
+
+      <p id="scheduleStatusPopup" class="schedule-status" aria-live="polite"></p>
+
+      <div class="schedule-actions">
+        <button type="button" id="scheduleDismiss" class="btn-outline schedule-later">Maybe Later</button>
+        <button type="submit" class="btn-primary schedule-submit">Send Request</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <script>
   // Active nav link on scroll
   const sections = document.querySelectorAll('section[id]');
@@ -571,6 +687,108 @@
     el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
     observer.observe(el);
   });
+
+  // Parent application forms (section + popup)
+  const scheduleModal = document.getElementById('scheduleModal');
+  const scheduleClose = document.getElementById('scheduleClose');
+  const scheduleDismiss = document.getElementById('scheduleDismiss');
+  const applyNowNavButton = document.querySelector('.nav-cta[href="#apply"]');
+  let schedulePopupTimer = null;
+
+  const closeScheduleModal = () => {
+    if (!scheduleModal) return;
+    scheduleModal.classList.remove('open');
+    scheduleModal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+  };
+
+  const openScheduleModal = () => {
+    if (!scheduleModal) return;
+    scheduleModal.classList.add('open');
+    scheduleModal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+  };
+
+  const bindScheduleForm = (formId, statusId, onSuccess) => {
+    const form = document.getElementById(formId);
+    const status = document.getElementById(statusId);
+    if (!form || !status) return;
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const submitButton = form.querySelector('.schedule-submit');
+      const originalText = submitButton.textContent;
+
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending...';
+      status.className = 'schedule-status';
+      status.textContent = '';
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: {
+            Accept: 'application/json'
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error('Submission failed');
+        }
+
+        form.reset();
+        status.className = 'schedule-status success';
+        status.textContent = 'Thank you. Your request was submitted successfully.';
+        if (onSuccess) onSuccess();
+      } catch (error) {
+        status.className = 'schedule-status error';
+        status.textContent = 'We could not submit your request right now. Please try again in a moment.';
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = originalText;
+      }
+    });
+  };
+
+  bindScheduleForm('scheduleForm', 'scheduleStatus');
+  bindScheduleForm('scheduleFormPopup', 'scheduleStatusPopup', () => {
+    setTimeout(closeScheduleModal, 1200);
+  });
+
+  if (scheduleModal && scheduleClose && scheduleDismiss) {
+    window.addEventListener('load', () => {
+      if (window.location.hash !== '#apply') {
+        schedulePopupTimer = setTimeout(openScheduleModal, 500);
+      }
+    });
+
+    if (applyNowNavButton) {
+      applyNowNavButton.addEventListener('click', () => {
+        if (schedulePopupTimer) {
+          clearTimeout(schedulePopupTimer);
+          schedulePopupTimer = null;
+        }
+        closeScheduleModal();
+      });
+    }
+
+    scheduleClose.addEventListener('click', closeScheduleModal);
+    scheduleDismiss.addEventListener('click', closeScheduleModal);
+
+    scheduleModal.addEventListener('click', (event) => {
+      if (event.target === scheduleModal) {
+        closeScheduleModal();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && scheduleModal.classList.contains('open')) {
+        closeScheduleModal();
+      }
+    });
+  }
 </script>
 </body>
 </html>
